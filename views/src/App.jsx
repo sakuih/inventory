@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {getItems, postItem, updateItem, deleteItem } from './serverFunctions.js'
+import UpdateModal from './UpdateModal.jsx'
 import cors from 'cors'
 
 function App() {
@@ -10,7 +11,10 @@ function App() {
   const [desc, setDesc] = useState("")
   const [filter, setFilter] = useState("")
   const [showAll, setShowAll] = useState(true)
+  const [showModal, setShowModal] = useState(false)
 
+  const closeModal = () => setShowModal(false)
+  const openModal = () => setShowModal(true)
 
   const handleNameChange = (event) => setName(event.target.value)
   const handleDescriptionChange = (event) => setDesc(event.target.value)
@@ -72,6 +76,7 @@ function App() {
 
   function updateItemFunc (event) {
 
+    openModal()
     console.log(`event ${event._id}`)
   }
 
@@ -88,12 +93,15 @@ function App() {
       Edit
     </button>
       </li>)
-    
   }
+
+  const [show, setShow] = useState(false)
+
 
   return (
     <>
       <div>
+        <UpdateModal isOpen={showModal} onClose={closeModal} />
         <h1>Inventory</h1>
         <h2>Filter</h2>
         <input type="text" placeholder="Filter names" />
@@ -103,7 +111,6 @@ function App() {
         <button type="submit">Add</button>
         </form>
             {mapItems(items)}
-
       </div>
     </>
   )
