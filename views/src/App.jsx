@@ -13,11 +13,22 @@ function App() {
   const [showAll, setShowAll] = useState(true)
   const [showModal, setShowModal] = useState(false)
 
+  const [updateName, setUpdateName] = useState('')
+  const [updateDesc, setUpdateDesc] = useState('')
+
+  let boolPut = false
   const closeModal = () => setShowModal(false)
+  const closeModalAndPut = () => {
+    boolPut = true
+    setShowModal(false)
+  }
   const openModal = () => setShowModal(true)
 
   const handleNameChange = (event) => setName(event.target.value)
   const handleDescriptionChange = (event) => setDesc(event.target.value)
+
+  const handleUpdateNameChange = (event) => setUpdateName(event.target.value)
+  const handleUpdateDescChange = (event) => setUpdateDesc(event.target.value)
 
   const handleFilterChange = (event) => {
     if (event.target.value > 0)
@@ -76,8 +87,20 @@ function App() {
 
   function updateItemFunc (event) {
 
+    
     openModal()
     console.log(`event ${event._id}`)
+    
+    const modItem = {
+      name: updateName,
+      desc: updateDesc
+    }
+
+    console.log(`modItem ${modItem.name}`)
+    console.log(`updateName ${updateName}`)
+
+    updateItem(event._id, modItem)
+
   }
 
   function mapItems (items) {
@@ -101,7 +124,10 @@ function App() {
   return (
     <>
       <div>
-        <UpdateModal isOpen={showModal} onClose={closeModal} />
+        <UpdateModal isOpen={showModal} onClose={closeModal} 
+        updateName={handleUpdateNameChange} updateDesc={handleUpdateDescChange} 
+        closeModalAndPut={closeModalAndPut}
+        />
         <h1>Inventory</h1>
         <h2>Filter</h2>
         <input type="text" placeholder="Filter names" />

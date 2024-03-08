@@ -54,7 +54,23 @@ app.delete("/:id", (req, res) => {
     //.catch(err)
 })
 
-//app.put("")
+app.put("/:id", (req, res) => {
+
+  const id = req.params.id
+  const body = req.body
+
+  editedItem = {
+    name: body.name,
+    desc: body.desc
+  }
+  console.log("name", body.name)
+
+  
+  items.findByIdAndUpdate(id, editedItem) 
+    .then(updatedItem => {
+      res.json(updatedItem)
+    })
+})
 
 
 //app.use(errorHandler)

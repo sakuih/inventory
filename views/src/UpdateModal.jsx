@@ -4,17 +4,11 @@ import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 
-function UpdateModal ( { isOpen, onClose } ) {
+function UpdateModal ( { isOpen, onClose, updateName, updateDesc, closeModalAndPut } ) {
 
 
 
-  //if (props.showModalClick)
-    //setShow(true)
-  /*
-    <Button variant="primary" onClick={handleShow}>
-      Launch demo modal
-    </Button>
-    */
+
   return (
   <>
 
@@ -26,10 +20,9 @@ function UpdateModal ( { isOpen, onClose } ) {
         <Form>
           <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
             <Form.Label>Name</Form.Label>
-            <Form.Control
-              type="email"
-              placeholder="name@example.com"
-              autoFocus
+            <input  onChange={updateName}
+                    className="form-control"
+                    type="text"
             />
           </Form.Group>
           <Form.Group
@@ -37,7 +30,10 @@ function UpdateModal ( { isOpen, onClose } ) {
             controlId="exampleForm.ControlTextarea1"
           >
             <Form.Label>Description</Form.Label>
-            <Form.Control as="textarea" rows={1} />
+            <input  onChange={updateDesc}
+                    className="form-control"
+                    type="text"
+            />
           </Form.Group>
         </Form>
       </Modal.Body>
@@ -45,7 +41,7 @@ function UpdateModal ( { isOpen, onClose } ) {
         <Button variant="secondary" onClick={onClose}>
           Close
         </Button>
-        <Button variant="primary" onClick={onClose}>
+        <Button variant="primary" onClick={closeModalAndPut}>
           Save Changes
         </Button>
       </Modal.Footer>

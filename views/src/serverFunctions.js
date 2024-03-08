@@ -14,8 +14,8 @@ export function postItem(item) {
   })
 }
 
-export function updateItem(item) {
-  axios.put(`${serverUrl}${item.id}`, {
+export function updateItem(id, item) {
+  axios.put(`${serverUrl}${id}`, {
     name: item.name,
     desc: item.desc
   })
