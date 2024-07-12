@@ -8,7 +8,7 @@
     "dev": "nodemon index.js",
     "build": "node build",
     "build:ui": "rm -rf build && cd ./views/ && npm run build  && cp -r build ../build"
-  },
+  },  
   "proxy": "http://localhost:5001",
   "keywords": [],
   "author": "",

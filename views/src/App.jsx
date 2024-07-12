@@ -129,11 +129,12 @@ function App() {
         closeModalAndPut={closeModalAndPut}
         />
         <h1>Inventory</h1>
+        <button >Login/Signup </button>
         <h2>Filter</h2>
         <input type="text" placeholder="Filter names" />
         <form type="submit" onSubmit={createItem}>
-          <input type="text" placeholder="Name of a item" onChange={handleNameChange} />
-          <input type="text" placeholder="Description of a item" onChange={handleDescriptionChange} />
+          <input type="text" placeholder="Item name" onChange={handleNameChange} />
+          <input type="text" placeholder="Description" onChange={handleDescriptionChange} />
         <button type="submit">Add</button>
         </form>
             {mapItems(items)}

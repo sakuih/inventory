@@ -1,4 +1,4 @@
-const User = require("../Models/UserModel")
+const User = require("../models/User")
 const { createSecretToken } = require("../util/SecretToken")
 const bcrytjs = require("bcryptjs")
 
