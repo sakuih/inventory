@@ -5,15 +5,16 @@
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
+    "start": "node index.js",
     "dev": "nodemon index.js",
     "build": "node build",
-    "build:ui": "rm -rf build && cd ./views/ && npm run build  && cp -r build ../build"
-  },  
-  "proxy": "http://localhost:5001",
+    "build:ui": "rm -rf dist && cd ./views/ && npm run build  && cp -r dist ../dist"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
